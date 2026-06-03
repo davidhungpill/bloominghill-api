@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "press_articles",
+  "info": {
+    "singularName": "press-article",
+    "pluralName": "press-articles",
+    "displayName": "press-article"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "press",
+        "news",
+        "media"
+      ]
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "externalUrl": {
+      "type": "string"
+    },
+    "body": {
+      "type": "blocks"
+    },
+    "views": {
+      "type": "integer",
+      "default": 0
+    },
+    "featuredImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "attachments": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

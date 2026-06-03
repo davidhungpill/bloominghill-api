@@ -51,6 +51,18 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Database 
     },
   };
 
+module.exports = ({ env }) => ({
+  connection: {
+    client: 'postgres',
+    connection: {
+      connectionString: env('DATABASE_URL'),
+      ssl: { rejectUnauthorized: false },
+    },
+    pool: { min: 0, max: 5 },
+    acquireConnectionTimeout: 60000,
+  },
+});
+
   return {
     connection: {
       client,

@@ -18,13 +18,13 @@
     "type": {
       "type": "enumeration",
       "enum": [
-        "press",
         "news",
+        "article",
         "media"
       ]
     },
     "date": {
-      "type": "datetime"
+      "type": "date"
     },
     "externalUrl": {
       "type": "string"

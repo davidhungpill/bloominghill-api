@@ -14,10 +14,11 @@
     "category": {
       "type": "enumeration",
       "enum": [
-        "volunteering",
-        "community",
-        "cultural_event",
-        "sharing_activity"
+        "봉사 activity",
+        "지역사회 seving",
+        "문화 event",
+        "장학 support",
+        "일상 story"
       ]
     },
     "title": {
@@ -36,7 +37,7 @@
       "type": "text"
     },
     "date": {
-      "type": "datetime"
+      "type": "date"
     },
     "views": {
       "type": "integer"

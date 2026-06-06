@@ -31,17 +31,10 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Database 
         database: env('DATABASE_NAME', 'strapi'),
         user: env('DATABASE_USERNAME', 'strapi'),
         password: env('DATABASE_PASSWORD', 'strapi'),
-        ssl: env.bool('DATABASE_SSL', false) && {
-          key: env('DATABASE_SSL_KEY', undefined),
-          cert: env('DATABASE_SSL_CERT', undefined),
-          ca: env('DATABASE_SSL_CA', undefined),
-          capath: env('DATABASE_SSL_CAPATH', undefined),
-          cipher: env('DATABASE_SSL_CIPHER', undefined),
-          rejectUnauthorized: env.bool('DATABASE_SSL_REJECT_UNAUTHORIZED', true),
-        },
+        ssl: { rejectUnauthorized: false },
         schema: env('DATABASE_SCHEMA', 'public'),
       },
-      pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
+      pool: { min: 0, max: env.int('DATABASE_POOL_MAX', 5) },
     },
     sqlite: {
       connection: {
@@ -50,18 +43,6 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Database 
       useNullAsDefault: true,
     },
   };
-
-module.exports = ({ env }) => ({
-  connection: {
-    client: 'postgres',
-    connection: {
-      connectionString: env('DATABASE_URL'),
-      ssl: { rejectUnauthorized: false },
-    },
-    pool: { min: 0, max: 5 },
-    acquireConnectionTimeout: 60000,
-  },
-});
 
   return {
     connection: {

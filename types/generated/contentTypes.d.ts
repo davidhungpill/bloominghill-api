@@ -440,6 +440,43 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBusinessProgramBusinessProgram
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'business_programs';
+  info: {
+    displayName: 'business-program';
+    pluralName: 'business-programs';
+    singularName: 'business-program';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::business-program.business-program'
+    > &
+      Schema.Attribute.Private;
+    order: Schema.Attribute.Integer;
+    page: Schema.Attribute.Enumeration<['orchestra', 'nanum', 'scholarship']> &
+      Schema.Attribute.Required;
+    period: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    target: Schema.Attribute.String;
+    targetSelection: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
   collectionName: 'faqs';
   info: {
@@ -513,6 +550,7 @@ export interface ApiHistoryEventHistoryEvent
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
     description: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -520,12 +558,10 @@ export interface ApiHistoryEventHistoryEvent
       'api::history-event.history-event'
     > &
       Schema.Attribute.Private;
-    month: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    year: Schema.Attribute.Integer;
   };
 }
 
@@ -585,7 +621,7 @@ export interface ApiPressArticlePressArticle
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    date: Schema.Attribute.DateTime;
+    date: Schema.Attribute.Date;
     externalUrl: Schema.Attribute.String;
     featuredImage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
@@ -598,7 +634,7 @@ export interface ApiPressArticlePressArticle
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
-    type: Schema.Attribute.Enumeration<['press', 'news', 'media']>;
+    type: Schema.Attribute.Enumeration<['news', 'article', 'media']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -618,7 +654,7 @@ export interface ApiProgramProgram extends Struct.CollectionTypeSchema {
   };
   attributes: {
     category: Schema.Attribute.Enumeration<
-      ['education_news', 'health_class', 'art_activity', 'children_class']
+      ['\uCEE4\uB9AC\uD058\uB7FC_list', '\uACF5\uC9C0\uC0AC\uD56D_notice']
     >;
     contentImages: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
@@ -627,7 +663,7 @@ export interface ApiProgramProgram extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    date: Schema.Attribute.DateTime;
+    date: Schema.Attribute.Date;
     desc: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -672,11 +708,21 @@ export interface ApiSiteConfigSiteConfig extends Struct.SingleTypeSchema {
       'images' | 'files' | 'videos' | 'audios'
     >;
     heroFaq: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    heroIntro: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    heroNanum: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     heroNotice: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    heroOrchestra: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     heroPress: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    heroScholarship: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     heroStory: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    kakaoChannel: Schema.Attribute.String;
+    kakaoChannelUrl: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -685,10 +731,10 @@ export interface ApiSiteConfigSiteConfig extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    statBeneficiaries: Schema.Attribute.Integer;
-    statProjects: Schema.Attribute.Integer;
-    statVolunteers: Schema.Attribute.Integer;
-    statYears: Schema.Attribute.Integer;
+    receiptEmail: Schema.Attribute.Email;
+    statDonataion: Schema.Attribute.String;
+    statOrchestra: Schema.Attribute.String;
+    statScholarship: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -707,13 +753,19 @@ export interface ApiStoryStory extends Struct.CollectionTypeSchema {
   };
   attributes: {
     category: Schema.Attribute.Enumeration<
-      ['volunteering', 'community', 'cultural_event', 'sharing_activity']
+      [
+        '\uBD09\uC0AC activity',
+        '\uC9C0\uC5ED\uC0AC\uD68C seving',
+        '\uBB38\uD654 event',
+        '\uC7A5\uD559 support',
+        '\uC77C\uC0C1 story',
+      ]
     >;
     content: Schema.Attribute.Blocks & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    date: Schema.Attribute.DateTime;
+    date: Schema.Attribute.Date;
     desc: Schema.Attribute.Text & Schema.Attribute.Required;
     images: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
@@ -1245,6 +1297,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::business-program.business-program': ApiBusinessProgramBusinessProgram;
       'api::faq.faq': ApiFaqFaq;
       'api::hero-slide.hero-slide': ApiHeroSlideHeroSlide;
       'api::history-event.history-event': ApiHistoryEventHistoryEvent;

@@ -11,14 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "year": {
-      "type": "integer"
-    },
-    "month": {
-      "type": "integer"
-    },
     "description": {
       "type": "string"
+    },
+    "date": {
+      "type": "date"
     }
   }
 }

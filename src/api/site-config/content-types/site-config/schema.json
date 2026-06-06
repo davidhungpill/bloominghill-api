@@ -11,6 +11,46 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "heroIntro": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "heroOrchestra": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "heroNanum": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "heroScholarship": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
     "heroStory": {
       "type": "media",
       "multiple": false,
@@ -81,18 +121,6 @@
         "audios"
       ]
     },
-    "statVolunteers": {
-      "type": "integer"
-    },
-    "statBeneficiaries": {
-      "type": "integer"
-    },
-    "statProjects": {
-      "type": "integer"
-    },
-    "statYears": {
-      "type": "integer"
-    },
     "bankName": {
       "type": "string"
     },
@@ -103,6 +131,24 @@
       "type": "string"
     },
     "phone": {
+      "type": "string"
+    },
+    "statOrchestra": {
+      "type": "string"
+    },
+    "statScholarship": {
+      "type": "string"
+    },
+    "statDonataion": {
+      "type": "string"
+    },
+    "receiptEmail": {
+      "type": "email"
+    },
+    "kakaoChannel": {
+      "type": "string"
+    },
+    "kakaoChannelUrl": {
       "type": "string"
     }
   }

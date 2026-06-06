@@ -14,10 +14,8 @@
     "category": {
       "type": "enumeration",
       "enum": [
-        "education_news",
-        "health_class",
-        "art_activity",
-        "children_class"
+        "커리큘럼_list",
+        "공지사항_notice"
       ]
     },
     "title": {
@@ -28,7 +26,7 @@
       "type": "text"
     },
     "date": {
-      "type": "datetime"
+      "type": "date"
     },
     "views": {
       "type": "integer"

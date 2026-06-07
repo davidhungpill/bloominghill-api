@@ -3,7 +3,6 @@ import type { Core } from '@strapi/strapi';
 const config: Core.Config.Middlewares = [
   'strapi::logger',
   'strapi::errors',
-  'strapi::security',
   {
     name: 'strapi::cors',
     config: {
@@ -12,9 +11,11 @@ const config: Core.Config.Middlewares = [
       ],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS', 'HEAD'],
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
+      credentials: true,
       keepHeaderOnError: true,
     },
   },
+  'strapi::security',
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',

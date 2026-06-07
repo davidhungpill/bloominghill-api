@@ -1,6 +1,11 @@
 import type { Core } from '@strapi/strapi';
 
 export default ({ env }: Core.Config.Shared.ConfigParams) => ({
+  'users-permissions': {
+    config: {
+      jwtSecret: env('JWT_SECRET'),
+    },
+  },
   upload: {
     config: {
       provider: 'aws-s3',

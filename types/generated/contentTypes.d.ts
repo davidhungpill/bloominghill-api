@@ -477,6 +477,42 @@ export interface ApiBusinessProgramBusinessProgram
   };
 }
 
+export interface ApiCafePostCafePost extends Struct.CollectionTypeSchema {
+  collectionName: 'cafe_posts';
+  info: {
+    displayName: 'cafe-post';
+    pluralName: 'cafe-posts';
+    singularName: 'cafe-post';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contentImages: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    desc: Schema.Attribute.Blocks;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cafe-post.cafe-post'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    thumbnail: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    views: Schema.Attribute.Integer;
+  };
+}
+
 export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
   collectionName: 'faqs';
   info: {
@@ -698,6 +734,7 @@ export interface ApiSiteConfigSiteConfig extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    heroCafe: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     heroDonate: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -1298,6 +1335,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::business-program.business-program': ApiBusinessProgramBusinessProgram;
+      'api::cafe-post.cafe-post': ApiCafePostCafePost;
       'api::faq.faq': ApiFaqFaq;
       'api::hero-slide.hero-slide': ApiHeroSlideHeroSlide;
       'api::history-event.history-event': ApiHistoryEventHistoryEvent;

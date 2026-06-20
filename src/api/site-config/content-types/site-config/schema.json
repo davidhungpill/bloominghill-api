@@ -121,6 +121,16 @@
         "audios"
       ]
     },
+    "heroCafe": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
     "bankName": {
       "type": "string"
     },

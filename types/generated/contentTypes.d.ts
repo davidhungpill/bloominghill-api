@@ -734,6 +734,12 @@ export interface ApiSiteConfigSiteConfig extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    facilityCafe: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    facilityLifelong: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     heroCafe: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     heroDonate: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'

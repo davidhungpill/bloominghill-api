@@ -160,6 +160,26 @@
     },
     "kakaoChannelUrl": {
       "type": "string"
+    },
+    "facilityCafe": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "facilityLifelong": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

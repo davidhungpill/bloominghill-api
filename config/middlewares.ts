@@ -8,6 +8,7 @@ const config: Core.Config.Middlewares = [
     config: {
       origin: [
         'https://bloominghill-front.davidhungpill.workers.dev',
+        'https://bhnanum.kr',
       ],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS', 'HEAD'],
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
